@@ -1,13 +1,12 @@
 # Insyd Frontend
 
-A notification system for architecture professionals built with Next.js.
+This is a proof-of-concept (POC) frontend built as part of the Insyd notification system assignment.
 
 ## Features
 
-- Real-time activity tracking and notifications
-- User interaction simulation (follow, post, comment)
-- Clean and responsive UI with dark mode support
-- Built with modern React patterns and best practices
+- Simulated activity tracking (follow, post, comment)
+- Minimal UI for triggering interactions and viewing notifications
+- Integrates with a Node.js backend via REST APIs
 
 ## Tech Stack
 
