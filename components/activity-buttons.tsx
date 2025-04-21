@@ -6,6 +6,7 @@ import { UserPlus, FileText, MessageSquare } from "lucide-react";
 
 interface ActivityButtonsProps {
   onTriggerActivity: (type: Activity['type']) => void;
+  disabled?: boolean;
 }
 
 export function ActivityButtons({ onTriggerActivity }: ActivityButtonsProps) {

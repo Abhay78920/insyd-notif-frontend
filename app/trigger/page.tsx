@@ -10,13 +10,16 @@ import { UserSelector } from '@/components/user-selector';
 import { ActivityButtons } from '@/components/activity-buttons';
 import { Toaster } from '@/components/ui/toaster';
 import { useToast } from '@/hooks/use-toast';
+import { Spinner } from '@/components/ui/spinner';
 
 export default function TriggerPage() {
   const [actorId, setActorId] = useState<string>('user1');
   const [targetId, setTargetId] = useState<string>('user2');
+  const [loading, setLoading] = useState<boolean>(false); // New loading state
   const { toast } = useToast();
 
   const handleActivityTrigger = async (type: Activity['type']) => {
+    setLoading(true); // Set loading to true when the request starts
     try {
       const activity: Activity = {
         actorId,
@@ -38,6 +41,8 @@ export default function TriggerPage() {
         description: 'Failed to trigger activity. Please try again.',
         variant: 'destructive',
       });
+    } finally {
+      setLoading(false); // Set loading to false when the request completes
     }
   };
 
@@ -56,6 +61,7 @@ export default function TriggerPage() {
             targetId={targetId} 
             onActorChange={setActorId} 
             onTargetChange={setTargetId} 
+            disabled={loading} // Disable user selection while loading
           />
         </CardContent>
       </Card>
@@ -66,7 +72,13 @@ export default function TriggerPage() {
           <CardDescription>Select an activity to trigger</CardDescription>
         </CardHeader>
         <CardContent>
-          <ActivityButtons onTriggerActivity={handleActivityTrigger} />
+          {loading ? (
+            <div className="flex justify-center items-center">
+              <Spinner /> {/* Show a spinner while loading */}
+            </div>
+          ) : (
+            <ActivityButtons onTriggerActivity={handleActivityTrigger} disabled={loading} />
+          )}
         </CardContent>
       </Card>
       

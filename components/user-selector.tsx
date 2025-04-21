@@ -8,6 +8,7 @@ interface UserSelectorProps {
   targetId: string;
   onActorChange: (userId: string) => void;
   onTargetChange: (userId: string) => void;
+  disabled?: boolean;
   mode?: 'trigger' | 'notifications';
 }
 
