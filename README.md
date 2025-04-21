@@ -56,5 +56,5 @@ The frontend communicates with the backend through:
 
 Create a `.env.local` file with:
 ```
-NEXT_PUBLIC_API_URL=http://localhost:3001/api
+NEXT_PUBLIC_API_URL=your-backend-host-url
 ```
